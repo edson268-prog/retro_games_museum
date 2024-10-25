@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
+import 'package:retro_games_museum/home.dart';
 
 // void main() => runApp(const RetroGameMuseum());
 void main() {
@@ -8,7 +8,8 @@ void main() {
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
       statusBarColor: Colors.black, // Cambia el color de la Status Bar
-      statusBarIconBrightness: Brightness.light, // Cambia el color de los íconos
+      statusBarIconBrightness:
+          Brightness.light, // Cambia el color de los íconos
     ),
   );
 
@@ -20,7 +21,7 @@ class RetroGameMuseum extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       home: Scaffold(
         body: Index(),
       ),
@@ -29,6 +30,8 @@ class RetroGameMuseum extends StatelessWidget {
 }
 
 class Index extends StatelessWidget {
+  const Index({super.key});
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -44,8 +47,6 @@ class Index extends StatelessWidget {
               ),
             ),
           ),
-          
-          // Parte inferior: Título, subtítulo y botón
           Expanded(
             flex: 5,
             child: Container(
@@ -55,33 +56,16 @@ class Index extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                  padding: const EdgeInsets.all(16.0),
-                  decoration: BoxDecoration(
-                    color: Colors.blue,
-                    borderRadius: BorderRadius.circular(12.0),
-                  ),
-                  child: const Text(
-                    'Bienvenido a Retro Games Museum',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-                  const SizedBox(height: 8),
-                  Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Text(
-                      'Embarcate en una aventura a través de los videojuegos clásicos y recuerdos de tu infancia.',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.grey[600],
+                      padding: const EdgeInsets.all(16.0),
+                      decoration: BoxDecoration(
+                        color: Colors.blue,
+                        borderRadius: BorderRadius.circular(12.0),
                       ),
-                    ),
-                  ),
+                      child: titulo("Bienvenido a Retro Games Museum")),
+                  const SizedBox(height: 8),
+                  Container(
+                      padding: const EdgeInsets.all(16.0),
+                      child: subtitulo("Embarcate en una aventura a través de los videojuegos clásicos y recuerdos de tu infancia.")),
                   const SizedBox(height: 16),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
@@ -92,7 +76,9 @@ class Index extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(horizontal: 16),
                     ),
                     onPressed: () {
-                      // Acción del botón
+                      print("PRESIONADO");
+                      Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => const Home()));
                     },
                     child: const Text('Continuar'),
                   ),
@@ -104,4 +90,27 @@ class Index extends StatelessWidget {
       ),
     );
   }
+}
+
+Widget titulo(String titulo) {
+  return Text(
+    titulo,
+    textAlign: TextAlign.center,
+    style: const TextStyle(
+      fontSize: 24,
+      fontWeight: FontWeight.bold,
+      color: Colors.white,
+    ),
+  );
+}
+
+Widget subtitulo(String titulo) {
+  return Text(
+    titulo,
+    textAlign: TextAlign.center,
+    style: TextStyle(
+      fontSize: 16,
+      color: Colors.grey[600],
+    ),
+  );
 }

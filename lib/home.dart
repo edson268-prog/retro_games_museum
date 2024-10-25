@@ -1,66 +1,78 @@
 import 'package:flutter/material.dart';
+import 'package:retro_games_museum/screens/accesorios/accesorios_screen.dart';
+import 'package:retro_games_museum/screens/consola/consolas_screen.dart';
+import 'package:retro_games_museum/screens/juegos/juegos_screen.dart';
+import 'package:retro_games_museum/screens/videos/videos_screen.dart';
 
-void main() => runApp(const RetroGameMuseum());
-
-class RetroGameMuseum extends StatelessWidget {
-  const RetroGameMuseum({super.key});
+class Home extends StatelessWidget {
+  const Home({super.key});
 
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      title: "Retro Game Museum",
-      home: Index(),
+      home: Scaffold(
+        body: HomeBody(),
+      ),
     );
   }
 }
 
-class Index extends StatefulWidget {
-  const Index({super.key});
+class HomeBody extends StatelessWidget {
+  const HomeBody({super.key});
 
-  @override
-  State<Index> createState() => _IndexState();
-}
-
-class _IndexState extends State<Index> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Museum"),
-      ),
-      body: Column(
-        children: <Widget>[
-          Container(
-            padding: const EdgeInsets.all(20.0),
-            child: Image.network(
-                "https://firebasestorage.googleapis.com/v0/b/retrogamesmuseum-53f2f.appspot.com/o/Index%2FRetro_Banner_webp.webp?alt=media&token=36a1d16f-9ec4-4936-b67d-ed9862d56861"),
-          ),
-          const Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text("Hola 1"), 
-              Text("Hola 2")
-              ],
-          ),
-          Center(
-            child: ElevatedButton(
-              child: const Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Icon(Icons.access_time),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Text("Hora")
+    return DefaultTabController(
+      length: 4,
+      child: SafeArea(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Container(
+              padding: const EdgeInsets.all(16.0),
+              decoration: const BoxDecoration(
+                color: Colors.black,
+              ),
+              alignment: Alignment.center,
+              child: const Text(
+                'Retro Game Museum',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.blue,
+                ),
+              ),
+            ),
+            Container(
+              color: Colors.black,
+              child: const TabBar(
+                isScrollable: false,
+                indicatorColor: Colors.blue,
+                indicatorSize: TabBarIndicatorSize.label,
+                labelColor: Colors.blue,
+                unselectedLabelColor: Colors.white,
+                dividerColor: Colors.blue,
+                tabs: [
+                  Tab(text: 'Consolas'),
+                  Tab(text: 'Juegos'),
+                  Tab(text: 'Videos'),
+                  Tab(text: 'Accesorios'),
                 ],
               ),
-              onPressed: (){
-                var t = DateTime.now(); 
-                print(t);
-              },
             ),
-          )
-        ],
+            const Expanded(
+              child: TabBarView(
+                children: [
+                  ConsolasScreen(),
+                  JuegosScreen(),
+                  VideosScreen(),
+                  AccesoriosScreen(),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
