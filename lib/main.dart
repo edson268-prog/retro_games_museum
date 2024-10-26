@@ -2,35 +2,45 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:retro_games_museum/home.dart';
 
-// void main() => runApp(const RetroGameMuseum());
 void main() {
-  // Cambiar el color de la Status Bar
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
-      statusBarColor: Colors.black, // Cambia el color de la Status Bar
+      statusBarColor: Colors.black,
       statusBarIconBrightness:
-          Brightness.light, // Cambia el color de los íconos
+          Brightness.light,
     ),
   );
 
   runApp(const RetroGameMuseum());
 }
 
-class RetroGameMuseum extends StatelessWidget {
+class RetroGameMuseum extends StatefulWidget {
   const RetroGameMuseum({super.key});
 
   @override
+  State<RetroGameMuseum> createState() => _RetroGameMuseumState();
+}
+
+class _RetroGameMuseumState extends State<RetroGameMuseum> {
+  bool _isFirstLaunch = true;
+
+  @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Index(),
-      ),
+    return MaterialApp(
+      home: _isFirstLaunch ? Index(onContinue: _goToHome) : const Home(),
     );
+  }
+
+  void _goToHome() {
+    setState(() {
+      _isFirstLaunch = false;
+    });
   }
 }
 
 class Index extends StatelessWidget {
-  const Index({super.key});
+  final VoidCallback onContinue;
+  const Index({super.key, required this.onContinue});
 
   @override
   Widget build(BuildContext context) {
@@ -77,8 +87,7 @@ class Index extends StatelessWidget {
                     ),
                     onPressed: () {
                       print("PRESIONADO");
-                      Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const Home()));
+                      onContinue();
                     },
                     child: const Text('Continuar'),
                   ),
