@@ -51,8 +51,8 @@ class Index extends StatelessWidget {
             flex: 5,
             child: SizedBox(
               width: double.infinity,
-              child: Image.network(
-                'https://firebasestorage.googleapis.com/v0/b/retrogamesmuseum-53f2f.appspot.com/o/Index%2FRetro_Banner_2_webp.webp?alt=media&token=c3193177-bcbc-4ae4-b482-7cbc1f9fbf10',
+              child: Image.asset(
+                'assets/images/Retro_Banner_2_webp.webp',
                 fit: BoxFit.cover,
               ),
             ),

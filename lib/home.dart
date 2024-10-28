@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:retro_games_museum/screens/accesorios/accesorios_screen.dart';
-import 'package:retro_games_museum/screens/consola/consolas_screen.dart';
-import 'package:retro_games_museum/screens/juegos/juegos_screen.dart';
+import 'package:retro_games_museum/screens/console/consoles_screen.dart';
+import 'package:retro_games_museum/screens/games/games_screen.dart';
 import 'package:retro_games_museum/screens/videos/videos_screen.dart';
 
 class Home extends StatelessWidget {
@@ -64,8 +64,8 @@ class HomeBody extends StatelessWidget {
             const Expanded(
               child: TabBarView(
                 children: [
-                  ConsolasScreen(),
-                  JuegosScreen(),
+                  ConsolesScreen(),
+                  GamesScreen(),
                   VideosScreen(),
                   AccesoriosScreen(),
                 ],
