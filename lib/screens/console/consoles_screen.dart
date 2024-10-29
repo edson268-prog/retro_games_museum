@@ -32,7 +32,7 @@ class _ConsolesScreenState extends State<ConsolesScreen> {
       setState(() {
         _isLoading = false;
       });
-      // SHOW ERROR
+      _showErrorDialog(context);
     }
   }
 
@@ -43,7 +43,7 @@ class _ConsolesScreenState extends State<ConsolesScreen> {
     }
 
     return Container(
-      color: Colors.grey,
+      color: const Color.fromARGB(255, 231, 218, 218),
       child: GridView.builder(
         padding: const EdgeInsets.all(16.0),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -62,7 +62,7 @@ class _ConsolesScreenState extends State<ConsolesScreen> {
                   builder: (context) => ConsoleDetailScreen(
                     consoleName: console.name,
                     imageUrl: console.imagePath,
-                    consoleDetails: console, // Pasamos el modelo completo
+                    consoleDetails: console,
                   ),
                 ),
               );
@@ -82,7 +82,7 @@ class _ConsolesScreenState extends State<ConsolesScreen> {
                   ),
                   const SizedBox(height: 8.0),
                   Text(
-                    console.name,
+                    console.name + " - " + console.id.toString(),
                     style: TextStyle(
                       fontSize: 16,
                       color: Colors.grey[600],
@@ -101,6 +101,24 @@ class _ConsolesScreenState extends State<ConsolesScreen> {
           );
         },
       ),
+    );
+  }
+
+  void _showErrorDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Error'),
+          content: const Text("Ha ocurrido un error al traer los datos. Intente nuevamente más tarde."),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: const Text('Cerrar'),
+            ),
+          ],
+        );
+      },
     );
   }
 }

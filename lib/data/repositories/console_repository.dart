@@ -1,5 +1,6 @@
 import '../../core/database_helper.dart';
 import '../models/console_model.dart';
+import '../models/simple_console_model.dart';
 import '../../config/database_config.dart';
 
 class ConsoleRepository {
@@ -7,8 +8,9 @@ class ConsoleRepository {
 
   Future<List<ConsoleModel>> getAllConsoles() async {
     final db = await _databaseHelper.database;
-    final List<Map<String, dynamic>> maps = await db.query(DatabaseConfig.consoleTable);
-    
+    final List<Map<String, dynamic>> maps =
+        await db.query(DatabaseConfig.consoleTable);
+
     return List.generate(maps.length, (i) {
       return ConsoleModel.fromMap(maps[i]);
     });
@@ -29,5 +31,17 @@ class ConsoleRepository {
   Future<int> insertConsole(ConsoleModel console) async {
     final db = await _databaseHelper.database;
     return await db.insert(DatabaseConfig.consoleTable, console.toMap());
+  }
+
+  Future<List<SimpleConsoleModel>> getAllConsoleNames() async {
+    final db = await _databaseHelper.database;
+    final List<Map<String, dynamic>> maps = await db.query(
+      DatabaseConfig.consoleTable,
+      columns: ['id', 'name'],
+    );
+    
+    return List.generate(maps.length, (i) {
+      return SimpleConsoleModel.fromMap(maps[i]);
+    });
   }
 }

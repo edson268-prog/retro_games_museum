@@ -4,12 +4,12 @@ import 'package:retro_games_museum/data/models/console_model.dart';
 class ConsoleDetailScreen extends StatelessWidget {
   final String consoleName;
   final String imageUrl;
-  final ConsoleModel consoleDetails; // Agregamos esto
+  final ConsoleModel consoleDetails;
 
   const ConsoleDetailScreen({
     required this.consoleName,
     required this.imageUrl,
-    required this.consoleDetails, // Y esto
+    required this.consoleDetails,
     super.key,
   });
 

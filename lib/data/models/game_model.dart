@@ -5,7 +5,8 @@ class GameModel {
   final int releaseYear;
   final String genre;
   final String description;
-  final String? imagePath;
+  final String imagePath;
+  final double? rating;
 
   GameModel({
     this.id,
@@ -14,7 +15,8 @@ class GameModel {
     required this.releaseYear,
     required this.genre,
     required this.description,
-    this.imagePath,
+    required this.imagePath,
+    this.rating,
   });
 
   Map<String, dynamic> toMap() {
@@ -26,6 +28,7 @@ class GameModel {
       'genre': genre,
       'description': description,
       'image_path': imagePath,
+      'rating': rating,
     };
   }
 
@@ -38,6 +41,7 @@ class GameModel {
       genre: map['genre'],
       description: map['description'],
       imagePath: map['image_path'],
+      rating: map['rating'],
     );
   }
 }
