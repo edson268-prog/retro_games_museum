@@ -2,6 +2,7 @@ import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 import '../../config/database_config.dart';
 import '../../data/models/console_model.dart';
+import '../data/models/game_model.dart';
 
 class DatabaseHelper {
   static final DatabaseHelper _instance = DatabaseHelper._internal();
@@ -92,8 +93,97 @@ class DatabaseHelper {
       ),
     ];
 
+    final defaultGames = [
+      // NES
+      GameModel(
+        title: 'Super Mario Bros', 
+        consoleId: 1, 
+        releaseYear: 1985, 
+        genre: 'Plataformas, Aventura', 
+        description: 'El juego describe las aventuras de dos fontaneros, Mario y Luigi, quienes deben rescatar a la Princesa Peach, quién fue secuestrada por el rey de los Koopas, Bowser y salvar al Reino Champiñón de este mismo. A través de ocho diferentes niveles de juego, los jugadores pueden controlar a uno de los dos hermanos y deben enfrentarse finalmente a cada uno de los enemigos de cada castillo para liberar a la Princesa Peach.',
+        imagePath: 'https://firebasestorage.googleapis.com/v0/b/retrogamesmuseum-53f2f.appspot.com/o/games%2Fnes_super_mario_bros.jpg?alt=media&token=cba4c64d-7b1a-448c-997c-f4676ec4d925'
+      ),
+      GameModel(
+        title: 'Duck Hunt', 
+        consoleId: 1, 
+        releaseYear: 1984, 
+        genre: 'Shooter, Simulación', 
+        description: 'Duck Hunt es un videojuego de disparos para la Nintendo Entertainment System. Se conoce más comúnmente como un juego de lanzamiento para el NES en América del Norte (que venia incluida con la consola). Duck Hunt está basado en un juego de Laser Clay Shooting System con el mismo nombre. Una versión (Vs.) fue lanzada en las salas recreativas en América del Norte en 1984. Después se lanzó como un combo con Super Mario Bros. e incluso más tarde se lanzó como una combinación de tres juegos con World Class Track Meet.',
+        imagePath: 'https://firebasestorage.googleapis.com/v0/b/retrogamesmuseum-53f2f.appspot.com/o/games%2Fnes_duck_hunt.jpg?alt=media&token=8ffedf6e-1734-4076-8768-d2c78fb8577c'
+      ),
+      GameModel(
+        title: 'Super Mario Bros 3', 
+        consoleId: 1, 
+        releaseYear: 1988, 
+        genre: 'Plataformas', 
+        description: 'Super Mario Bros. 3 (スーパーマリオブラザーズ3 en japonés) es el último videojuego de plataformas de la franquicia Mario para la consola Nintendo Entertainment System. Salió a la venta el 23 de octubre de 1988 en Japón y el 12 de febrero de 1990 en Estados Unidos. Al igual que en títulos anteriores, SMB3 fue diseñado por Shigeru Miyamoto, mientras que la banda sonora fue compuesta por Kōji Kondō. El juego retoma la historia del primer título, en la cual los fontaneros Mario y Luigi deberán salvar a la Princesa Peach de las garras del Rey Koopa.',
+        imagePath: 'https://firebasestorage.googleapis.com/v0/b/retrogamesmuseum-53f2f.appspot.com/o/games%2Fnes_super_mario_bros_3.jpg?alt=media&token=4aee9410-5818-4a3e-8b2b-4630acc8b3f8'
+      ),
+      GameModel(
+        title: 'Excitebike', 
+        consoleId: 1, 
+        releaseYear: 1984, 
+        genre: 'Racing, Deportes', 
+        description: 'Es un videojuego de carreras de moto-cross creado por Nintendo. Debutó como juego para la Famicom en Japón en 1984 y un año más tarde en la consola Nintendo Entertainment System en América del Norte en el año 1985. Este es el primer juego de la serie Excite. En el juego, el jugador tiene la opción de competir contra motoristas manejados por la consola o con un amigo. Fue el primer juego de la saga Excite, sucedido por Excitebike 64 y sus sucesores, Excite Truck y Excitebots.',
+        imagePath: 'https://firebasestorage.googleapis.com/v0/b/retrogamesmuseum-53f2f.appspot.com/o/games%2Fnes_excitebike.jpg?alt=media&token=ebad084b-6145-43f6-9ecd-7afa6939f785'
+      ),
+      GameModel(
+        title: 'The Legend of Zelda', 
+        consoleId: 1, 
+        releaseYear: 1986, 
+        genre: 'Acción, Aventura', 
+        description: 'También conocido como THE HYRULE FANTASY, es la primera entrega de la saga de Zelda, diseñado por Shigeru Miyamoto y desarrollado y publicado por Nintendo. Situado en la tierra de Hyrule, la trama se centra en un chico llamado Link, el protagonista jugable que tiene como objetivo rescatar a la princesa Zelda de las garras de la antagonista principal, Ganon, mediante la recopilación de los ocho fragmentos de la Trifuerza, un poderoso artefacto.',
+        imagePath: 'https://firebasestorage.googleapis.com/v0/b/retrogamesmuseum-53f2f.appspot.com/o/games%2Fnes_legend_of_zelda.jpg?alt=media&token=407c1016-657b-49cb-a720-a3823c709c01'
+      ),
+      // PS1
+      GameModel(
+        title: 'Crash Bandicoot', 
+        consoleId: 3, 
+        releaseYear: 1996, 
+        genre: 'Plataformas, Aventura', 
+        description: 'El jugador controla a Crash, un bandicoot mejorado genéticamente creado por el científico loco Doctor Neo Cortex. La trama sigue a Crash en su intento por rescatar a su novia Tawna, y frustrar los planes del científico Neo Cortex para dominar el mundo. Si bien el título cuenta principalmente con un sistema de perspectiva en tercera persona, algunos de sus niveles muestran una vista tanto lateral como frontal.',
+        imagePath: 'https://firebasestorage.googleapis.com/v0/b/retrogamesmuseum-53f2f.appspot.com/o/games%2Fps1_crash_bandicoot.webp?alt=media&token=56d9c9aa-0f52-4fa2-89d2-ee5e1e0ad5a8'
+      ),
+      GameModel(
+        title: 'Tomb Raider', 
+        consoleId: 3, 
+        releaseYear: 1996, 
+        genre: 'Acción, Disparos, Aventura', 
+        description: 'Es la primera entrega de la franquicia mediática Tomb Raider, que sigue a la arqueóloga y aventurera Lara Croft, contratada por la empresaria de Jacqueline Natla para encontrar un artefacto llamado Vástago de la Atlántida. El juego presenta a Lara atravesando niveles divididos en múltiples áreas y complejos de habitaciones mientras lucha contra enemigos y resuelve acertijos para progresar.',
+        imagePath: 'https://firebasestorage.googleapis.com/v0/b/retrogamesmuseum-53f2f.appspot.com/o/games%2Fps1_tomb_raider.jpg?alt=media&token=958c37ab-06bb-4a84-8b52-0a9bdbec145d'
+      ),
+      GameModel(
+        title: 'Metal Gear Solid', 
+        consoleId: 3, 
+        releaseYear: 1998, 
+        genre: 'Acción, Espionaje táctico', 
+        description: 'Metal Gear Solid sigue a Solid Snake, un soldado que se infiltra en una instalación de armas nucleares para neutralizar la amenaza terrorista de FOXHOUND, una unidad genéticamente mejorada de fuerzas especiales. Snake debe liberar a dos importantes rehenes, confrontar a los terroristas y evitar el lanzamiento de un ataque nuclear. Para ello, cuenta con un equipo de apoyo a distancia que le comunica vía códec información sobre la misión, comandada por el coronel Roy Campbell, y complementada por personal médico, de análisis de datos, expertos en armas y en supervivencia.',
+        imagePath: 'https://firebasestorage.googleapis.com/v0/b/retrogamesmuseum-53f2f.appspot.com/o/games%2Fps1_metal_gear_solid.jpg?alt=media&token=2c8648c0-1e24-45c0-bd8c-a1e53bbf866d'
+      ),
+      GameModel(
+        title: 'Tekken 3', 
+        consoleId: 3, 
+        releaseYear: 1997, 
+        genre: 'Lucha', 
+        description: 'Tekken 3 es un videojuego de lucha desarrollado y publicado por Namco. Lanzado por primera vez en arcades en 1997 y posteriormente adaptado para la PlayStation en 1998, Tekken 3 es la tercera entrega de la serie Tekken y se considera uno de los mejores juegos de lucha de todos los tiempos.',
+        imagePath: 'https://firebasestorage.googleapis.com/v0/b/retrogamesmuseum-53f2f.appspot.com/o/games%2Fps1_tekken3.webp?alt=media&token=a9659a06-2e3b-4138-a61d-ea21b7b2dbca'
+      ),
+      GameModel(
+        title: 'Final Fantasy VII', 
+        consoleId: 3, 
+        releaseYear: 1997, 
+        genre: 'Aventura', 
+        description: ' El argumento de Final Fantasy VII se centra en el protagonista Cloud Strife, un mercenario que inicialmente se une al grupo ecoterrorista AVALANCHA para detener el control mundial de la corporación Shinra que está drenando la vida del planeta para usarla como fuente de energía. Conforme la historia avanza, Cloud y sus aliados se ven envueltos en un conflicto que representa una amenaza aún mayor para el mundo, enfrentándose a Sefirot, el antagonista principal del juego.',
+        imagePath: 'https://firebasestorage.googleapis.com/v0/b/retrogamesmuseum-53f2f.appspot.com/o/games%2Fps1_ff_vii.jpg?alt=media&token=b8eab8fd-c5fc-4f32-a0d3-a929a535fa09'
+      ),
+    ];
+
     for (var console in defaultConsoles) {
       await db.insert(DatabaseConfig.consoleTable, console.toMap());
+    }
+
+    for (var game in defaultGames) {
+      await db.insert(DatabaseConfig.gameTable, game.toMap());
     }
   }
 }

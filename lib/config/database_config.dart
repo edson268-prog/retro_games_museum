@@ -26,6 +26,7 @@ class DatabaseConfig {
       genre TEXT,
       description TEXT,
       image_path TEXT,
+      rating DOUBLE,
       FOREIGN KEY (console_id) REFERENCES $consoleTable (id)
     )
   ''';
