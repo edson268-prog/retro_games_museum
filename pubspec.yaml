@@ -32,7 +32,8 @@ dependencies:
     sdk: flutter
   shared_preferences: ^2.0.0
   sqflite: ^2.2.2+3
-  path: ^1.8.3  
+  path: ^1.8.3
+  youtube_player_iframe: ^4.0.4
 
 
   # The following adds the Cupertino Icons font to your application.

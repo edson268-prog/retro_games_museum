@@ -4,6 +4,7 @@ class DatabaseConfig {
   
   static const String consoleTable = 'consoles';
   static const String gameTable = 'games';
+  static const String videoTable = 'videos';
   
   static const String createConsoleTable = '''
     CREATE TABLE $consoleTable(
@@ -27,6 +28,19 @@ class DatabaseConfig {
       description TEXT,
       image_path TEXT,
       rating DOUBLE,
+      FOREIGN KEY (console_id) REFERENCES $consoleTable (id)
+    )
+  ''';
+
+  static const String createVideoTable = '''
+    CREATE TABLE $videoTable(
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      title TEXT NOT NULL,
+      console_id INTEGER,
+      description TEXT,
+      thumbnail_url TEXT,
+      video_url TEXT,
+      duration TEXT,
       FOREIGN KEY (console_id) REFERENCES $consoleTable (id)
     )
   ''';

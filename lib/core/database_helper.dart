@@ -1,3 +1,4 @@
+import 'package:retro_games_museum/data/models/video_model.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 import '../../config/database_config.dart';
@@ -30,6 +31,7 @@ class DatabaseHelper {
   Future<void> _onCreate(Database db, int version) async {
     await db.execute(DatabaseConfig.createConsoleTable);
     await db.execute(DatabaseConfig.createGameTable);
+    await db.execute(DatabaseConfig.createVideoTable);
     await _insertDefaultData(db);
   }
 
@@ -173,9 +175,61 @@ class DatabaseHelper {
         consoleId: 3, 
         releaseYear: 1997, 
         genre: 'Aventura', 
-        description: ' El argumento de Final Fantasy VII se centra en el protagonista Cloud Strife, un mercenario que inicialmente se une al grupo ecoterrorista AVALANCHA para detener el control mundial de la corporación Shinra que está drenando la vida del planeta para usarla como fuente de energía. Conforme la historia avanza, Cloud y sus aliados se ven envueltos en un conflicto que representa una amenaza aún mayor para el mundo, enfrentándose a Sefirot, el antagonista principal del juego.',
+        description: 'El argumento de Final Fantasy VII se centra en el protagonista Cloud Strife, un mercenario que inicialmente se une al grupo ecoterrorista AVALANCHA para detener el control mundial de la corporación Shinra que está drenando la vida del planeta para usarla como fuente de energía. Conforme la historia avanza, Cloud y sus aliados se ven envueltos en un conflicto que representa una amenaza aún mayor para el mundo, enfrentándose a Sefirot, el antagonista principal del juego.',
         imagePath: 'https://firebasestorage.googleapis.com/v0/b/retrogamesmuseum-53f2f.appspot.com/o/games%2Fps1_ff_vii.jpg?alt=media&token=b8eab8fd-c5fc-4f32-a0d3-a929a535fa09'
       ),
+      //N64
+      GameModel(
+        title: 'Star Fox 64', 
+        consoleId: 5, 
+        releaseYear: 1997, 
+        genre: 'Disparos', 
+        description: 'Star Fox 64 llamado en Europa y Australia Lylat Wars, es un videojuego scrolling shooter para Nintendo 64. Se vendió acompañado del accesorio "Rumble Pak", el cual hacía vibrar el mando, lo cual fue una novedad. En un principio, este juego iba a ser parte de la Star Fox 2 para Super Nintendo, pero Nintendo optó por desarrollar el juego para Nintendo 64, que sería lanzada en menos de un año.',
+        imagePath: 'https://firebasestorage.googleapis.com/v0/b/retrogamesmuseum-53f2f.appspot.com/o/games%2Fn64_star_fox.jpg?alt=media&token=8267dca1-3964-4318-8551-70bc61ecb098'
+      ),
+    ];
+
+    final defaultVideos = [
+      VideoModel(
+        title: 'Tekken 3',
+        consoleId: 3,
+        description: 'Mira el trailer de Tekken 3',
+        thumbnailUrl: 'https://firebasestorage.googleapis.com/v0/b/retrogamesmuseum-53f2f.appspot.com/o/games%2Fps1_tekken3.webp?alt=media&token=a9659a06-2e3b-4138-a61d-ea21b7b2dbca',
+        videoUrl: 'https://www.youtube.com/watch?v=IsvtUxEFQaU',
+        duration: '1:37',
+      ),
+      VideoModel(
+        title: 'Excitebike',
+        consoleId: 1,
+        description: 'Pequeño Gameplay de Excitebike',
+        thumbnailUrl: 'https://firebasestorage.googleapis.com/v0/b/retrogamesmuseum-53f2f.appspot.com/o/games%2Fnes_excitebike.jpg?alt=media&token=ebad084b-6145-43f6-9ecd-7afa6939f785',
+        videoUrl: 'https://www.youtube.com/watch?v=b_YTqIAkQrc',
+        duration: '1:06',
+      ),
+      VideoModel(
+        title: 'Crash Bandicoot',
+        consoleId: 3,
+        description: 'Batalla de jefe Papu Papu',
+        thumbnailUrl: 'https://firebasestorage.googleapis.com/v0/b/retrogamesmuseum-53f2f.appspot.com/o/games%2Fps1_crash_bandicoot.webp?alt=media&token=56d9c9aa-0f52-4fa2-89d2-ee5e1e0ad5a8',
+        videoUrl: 'https://www.youtube.com/watch?v=ryXyMycZq7I',
+        duration: '0:40',
+      ),
+      VideoModel(
+        title: 'Star Fox 64',
+        consoleId: 5,
+        description: 'Gameplay de nivel Solar en Star Fox 64',
+        thumbnailUrl: 'https://firebasestorage.googleapis.com/v0/b/retrogamesmuseum-53f2f.appspot.com/o/games%2Fn64_star_fox.jpg?alt=media&token=8267dca1-3964-4318-8551-70bc61ecb098',
+        videoUrl: 'https://www.youtube.com/watch?v=41P87KmLjoE',
+        duration: '5:13',
+      ),
+      VideoModel(
+        title: 'Duck Hunt',
+        consoleId: 1,
+        description: 'Hecha un vista a este viejo gameplay de Duck Hunt, que recuerdos',
+        thumbnailUrl: 'https://firebasestorage.googleapis.com/v0/b/retrogamesmuseum-53f2f.appspot.com/o/games%2Fnes_duck_hunt.jpg?alt=media&token=8ffedf6e-1734-4076-8768-d2c78fb8577c',
+        videoUrl: 'https://www.youtube.com/watch?v=A78iNBzT8ug',
+        duration: '2:58',
+      )
     ];
 
     for (var console in defaultConsoles) {
@@ -184,6 +238,10 @@ class DatabaseHelper {
 
     for (var game in defaultGames) {
       await db.insert(DatabaseConfig.gameTable, game.toMap());
+    }
+
+    for (var game in defaultVideos) {
+      await db.insert(DatabaseConfig.videoTable, game.toMap());
     }
   }
 }
