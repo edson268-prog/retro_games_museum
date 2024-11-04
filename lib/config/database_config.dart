@@ -5,6 +5,8 @@ class DatabaseConfig {
   static const String consoleTable = 'consoles';
   static const String gameTable = 'games';
   static const String videoTable = 'videos';
+  static const String productTable = 'products';
+  static const String cartTable = 'cart';
   
   static const String createConsoleTable = '''
     CREATE TABLE $consoleTable(
@@ -43,5 +45,25 @@ class DatabaseConfig {
       duration TEXT,
       FOREIGN KEY (console_id) REFERENCES $consoleTable (id)
     )
+  ''';
+
+  static const String createProductTable = '''
+    CREATE TABLE $productTable(
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT NOT NULL,
+        description TEXT,
+        price REAL NOT NULL,
+        imageUrl TEXT,
+        stock INTEGER NOT NULL
+    )
+  ''';
+
+  static const String createCartTable = '''
+    CREATE TABLE cart(
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        productId INTEGER NOT NULL,
+        quantity INTEGER NOT NULL,
+        FOREIGN KEY (productId) REFERENCES products (id)
+      )
   ''';
 }

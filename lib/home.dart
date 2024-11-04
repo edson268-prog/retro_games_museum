@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:retro_games_museum/screens/accesorios/accesorios_screen.dart';
-import 'package:retro_games_museum/screens/console/consoles_screen.dart';
-import 'package:retro_games_museum/screens/games/games_screen.dart';
-import 'package:retro_games_museum/screens/videos/videos_screen.dart';
+
+import 'screens/console/consoles_screen.dart';
+import 'screens/games/games_screen.dart';
+import 'screens/store/store_screen.dart';
+import 'screens/videos/videos_screen.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -57,7 +58,7 @@ class HomeBody extends StatelessWidget {
                   Tab(text: 'Consolas'),
                   Tab(text: 'Juegos'),
                   Tab(text: 'Videos'),
-                  Tab(text: 'Accesorios'),
+                  Tab(text: 'Tienda'),
                 ],
               ),
             ),
@@ -67,7 +68,7 @@ class HomeBody extends StatelessWidget {
                   ConsolesScreen(),
                   GamesScreen(),
                   VideosScreen(),
-                  AccesoriosScreen(),
+                  StoreScreen(),
                 ],
               ),
             ),

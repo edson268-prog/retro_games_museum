@@ -1,3 +1,4 @@
+import 'package:retro_games_museum/data/models/product_model.dart';
 import 'package:retro_games_museum/data/models/video_model.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
@@ -32,6 +33,8 @@ class DatabaseHelper {
     await db.execute(DatabaseConfig.createConsoleTable);
     await db.execute(DatabaseConfig.createGameTable);
     await db.execute(DatabaseConfig.createVideoTable);
+    await db.execute(DatabaseConfig.createProductTable);
+    await db.execute(DatabaseConfig.createCartTable);
     await _insertDefaultData(db);
   }
 
@@ -232,6 +235,44 @@ class DatabaseHelper {
       )
     ];
 
+    final defaultProducts = [
+      ProductModel(
+        name: 'Tekken 3',
+        description: 'Juegod de PS1, buen estado, versión Greatest Hits, incluye manual',
+        price: 10.00,
+        imageUrl: 'https://firebasestorage.googleapis.com/v0/b/retrogamesmuseum-53f2f.appspot.com/o/games%2Fps1_tekken3.webp?alt=media&token=a9659a06-2e3b-4138-a61d-ea21b7b2dbca',
+        stock: 10,
+      ),
+      ProductModel(
+        name: 'Duck Hunt',
+        description: 'Nintendo 1984, cartuchos en buen estado, originales',
+        price: 25.00,
+        imageUrl: 'https://firebasestorage.googleapis.com/v0/b/retrogamesmuseum-53f2f.appspot.com/o/games%2Fnes_duck_hunt.jpg?alt=media&token=8ffedf6e-1734-4076-8768-d2c78fb8577c',
+        stock: 5,
+      ),
+      ProductModel(
+        name: 'Memory Card PS1',
+        description: 'PS1 Memory Card 8mb, beun estado, también compatible para ps2',
+        price: 25.00,
+        imageUrl: 'https://firebasestorage.googleapis.com/v0/b/retrogamesmuseum-53f2f.appspot.com/o/store%2Fmemory-card-ps1.webp?alt=media&token=cc5c2064-6349-4a61-b693-867c6494e84a',
+        stock: 10,
+      ),
+      ProductModel(
+        name: 'House Of The Dead 2',
+        description: 'Juego de Dreamcast, como nuevo, lanzado en 1999, shooter en primera persona, definitimante un clásico',
+        price: 80.00,
+        imageUrl: 'https://firebasestorage.googleapis.com/v0/b/retrogamesmuseum-53f2f.appspot.com/o/store%2Fhouse_of_the_death_webp.webp?alt=media&token=9659e4e6-d884-4947-814a-a7ce1cd15e4f',
+        stock: 2,
+      ),
+      ProductModel(
+        name: 'Figura Crash Bandicoot',
+        description: 'Figura NECA de Crash Bandicoot, altura de aproximado de 22 cm. coleccionable en caja ',
+        price: 92.50,
+        imageUrl: 'https://firebasestorage.googleapis.com/v0/b/retrogamesmuseum-53f2f.appspot.com/o/store%2Fcrash_figure_webp.webp?alt=media&token=a5fa3362-115c-474a-9620-b823d2fbbb07',
+        stock: 5,
+      )
+    ];
+
     for (var console in defaultConsoles) {
       await db.insert(DatabaseConfig.consoleTable, console.toMap());
     }
@@ -240,8 +281,12 @@ class DatabaseHelper {
       await db.insert(DatabaseConfig.gameTable, game.toMap());
     }
 
-    for (var game in defaultVideos) {
-      await db.insert(DatabaseConfig.videoTable, game.toMap());
+    for (var videos in defaultVideos) {
+      await db.insert(DatabaseConfig.videoTable, videos.toMap());
+    }
+
+    for (var product in defaultProducts) {
+      await db.insert(DatabaseConfig.productTable, product.toMap());
     }
   }
 }
