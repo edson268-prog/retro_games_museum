@@ -19,6 +19,7 @@ class _GamesScreenState extends State<GamesScreen> {
   List<SimpleConsoleModel> _consolesNames = [];
   List<GameModel> _gameImages = [];
   bool _isLoading = true;
+  bool _showDefaultMessage = true;
 
   @override
   void initState() {
@@ -48,7 +49,7 @@ class _GamesScreenState extends State<GamesScreen> {
 
     return Container(
         decoration: const BoxDecoration(
-          color:  Color.fromARGB(255, 231, 218, 218),
+          color: Color.fromARGB(255, 231, 218, 218),
         ),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           SingleChildScrollView(
@@ -83,37 +84,47 @@ class _GamesScreenState extends State<GamesScreen> {
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             padding: const EdgeInsets.symmetric(vertical: 8.0),
-            child: Row(
-              children: _gameImages.map((game) {
-                return GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => GameDetailScreen(
-                          gameId: game.id ?? 0,
-                          gameTitle: game.title,
-                          rating: game.rating ?? 0,
-                          releaseYear: game.releaseYear,
-                          genre: game.genre,
-                          description: game.description,
-                          imagePath: game.imagePath,
-                        ),
+            child: _gameImages.isEmpty
+                ? SizedBox(
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height * 0.6,
+                    child: Center(
+                      child: Text(
+                        _showDefaultMessage ? 'Seleccione una consola para ver sus juegos': 'No se tiene registro de juegos para esta consola.',
                       ),
-                    );
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: Image.network(
-                      game.imagePath,
-                      width: MediaQuery.of(context).size.width * 0.8,
-                      height: MediaQuery.of(context).size.height * 0.6,
-                      fit: BoxFit.cover,
                     ),
+                  )
+                : Row(
+                    children: _gameImages.map((game) {
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => GameDetailScreen(
+                                gameId: game.id ?? 0,
+                                gameTitle: game.title,
+                                rating: game.rating ?? 0,
+                                releaseYear: game.releaseYear,
+                                genre: game.genre,
+                                description: game.description,
+                                imagePath: game.imagePath,
+                              ),
+                            ),
+                          );
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                          child: Image.network(
+                            game.imagePath,
+                            width: MediaQuery.of(context).size.width * 0.8,
+                            height: MediaQuery.of(context).size.height * 0.6,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      );
+                    }).toList(),
                   ),
-                );
-              }).toList(),
-            ),
           ),
         ]));
   }
@@ -124,6 +135,7 @@ class _GamesScreenState extends State<GamesScreen> {
           await _gameRepository.getGamesByConsoleId(int.parse(consoleId));
       setState(() {
         _gameImages = games.map((imagePath) => imagePath).toList();
+        _showDefaultMessage = false;
       });
     } catch (e) {
       setState(() {

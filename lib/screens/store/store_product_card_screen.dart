@@ -53,7 +53,11 @@ class StoreProductCard extends StatelessWidget {
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: product.stock > 0 ? onAddToCart : null,
-                    child: const Text('Agregar'),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue,
+                      foregroundColor: Colors.white,
+                    ),
+                    child: const Text('Agregar')
                   ),
                 ),
               ],

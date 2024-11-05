@@ -190,6 +190,83 @@ class DatabaseHelper {
         description: 'Star Fox 64 llamado en Europa y Australia Lylat Wars, es un videojuego scrolling shooter para Nintendo 64. Se vendió acompañado del accesorio "Rumble Pak", el cual hacía vibrar el mando, lo cual fue una novedad. En un principio, este juego iba a ser parte de la Star Fox 2 para Super Nintendo, pero Nintendo optó por desarrollar el juego para Nintendo 64, que sería lanzada en menos de un año.',
         imagePath: 'https://firebasestorage.googleapis.com/v0/b/retrogamesmuseum-53f2f.appspot.com/o/games%2Fn64_star_fox.jpg?alt=media&token=8267dca1-3964-4318-8551-70bc61ecb098'
       ),
+      GameModel(
+        title: 'The Legend of Zelda: Ocarina of Time', 
+        consoleId: 5, 
+        releaseYear: 1998, 
+        genre: 'Aventura',
+        description: 'Un juego de aventura épica donde el jugador toma el control de Link en su misión para salvar la tierra de Hyrule del malvado Ganondorf. Este juego es considerado uno de los mejores videojuegos de todos los tiempos.',
+        imagePath: 'https://firebasestorage.googleapis.com/v0/b/retrogamesmuseum-53f2f.appspot.com/o/games%2Fn64_legend_of_zelda_ocarina_of_time.jpg?alt=media&token=692d4fac-ff19-4768-8279-9ef4ea5e9a40'
+      ),
+      // PS2
+      GameModel(
+        title: 'Shadow of the Colossus', 
+        consoleId: 4, 
+        releaseYear: 2005, 
+        genre: 'Aventura',
+        description: 'Una obra maestra de aventura donde el jugador debe derrotar a 16 gigantes conocidos como colosos para revivir a una joven en un mundo vasto y desolado.',
+        imagePath: 'https://firebasestorage.googleapis.com/v0/b/retrogamesmuseum-53f2f.appspot.com/o/games%2Fps2_shadow.jpg?alt=media&token=a26d511c-8a24-4aa3-afde-40504004ebeb'
+      ),
+      GameModel(
+        title: 'God of War II', 
+        consoleId: 4, 
+        releaseYear: 2007, 
+        genre: 'Acción',
+        description: 'Kratos, el guerrero espartano, continúa su lucha contra los dioses en una épica aventura llena de acción brutal y mitología griega.',
+        imagePath: 'https://firebasestorage.googleapis.com/v0/b/retrogamesmuseum-53f2f.appspot.com/o/games%2Fps2_gow_2.jpg?alt=media&token=2ba58ccb-43a3-46cb-ae3e-32c5c9d5142d'
+      ),
+
+      // SNES
+      GameModel(
+        title: 'Super Mario World', 
+        consoleId: 2, 
+        releaseYear: 1990, 
+        genre: 'Plataforma',
+        description: 'Este juego presenta a Mario en su misión para rescatar a la princesa y salvar el Reino Champiñón en una colorida y desafiante aventura de plataformas.',
+        imagePath: 'https://firebasestorage.googleapis.com/v0/b/retrogamesmuseum-53f2f.appspot.com/o/games%2Fsnes_super_mario_world_webp.webp?alt=media&token=8c0392d6-c787-47d5-af60-bbeca1739e68'
+      ),
+      GameModel(
+        title: 'The Legend of Zelda: A Link to the Past', 
+        consoleId: 2, 
+        releaseYear: 1991, 
+        genre: 'Aventura',
+        description: 'Un clásico de aventura y fantasía donde Link debe enfrentarse a la maldad que amenaza el reino de Hyrule.',
+        imagePath: 'https://firebasestorage.googleapis.com/v0/b/retrogamesmuseum-53f2f.appspot.com/o/games%2Fsnes_a_link_to_the_past_webp.webp?alt=media&token=891e0086-5fd9-4a2a-8111-eeaacf7c7d09'
+      ),
+      GameModel(
+        title: 'Donkey Kong Country', 
+        consoleId: 2, 
+        releaseYear: 1994, 
+        genre: 'Plataforma',
+        description: 'Un juego de plataformas revolucionario por sus gráficos y jugabilidad, protagonizado por Donkey Kong y Diddy en su misión para recuperar sus bananas robadas.',
+        imagePath: 'https://firebasestorage.googleapis.com/v0/b/retrogamesmuseum-53f2f.appspot.com/o/games%2Fsnes_donkey_kong_country_webp.webp?alt=media&token=a4e433aa-19f2-441d-bbbc-61f0d6bda88c'
+      ),
+      GameModel(
+        title: 'Super Metroid', 
+        consoleId: 2, 
+        releaseYear: 1994, 
+        genre: 'Acción',
+        description: 'Una intensa aventura de acción donde Samus Aran explora un mundo alienígena en busca del infame metroid robado.',
+        imagePath: 'https://firebasestorage.googleapis.com/v0/b/retrogamesmuseum-53f2f.appspot.com/o/games%2Fsnes_super_metroid_webp.webp?alt=media&token=dcb571c1-3227-4476-a07b-1c87f77297ec'
+      ),
+
+      // MegaDrive
+      GameModel(
+        title: 'Sonic the Hedgehog', 
+        consoleId: 6, 
+        releaseYear: 1991, 
+        genre: 'Plataforma',
+        description: 'El rápido erizo Sonic corre a través de vibrantes niveles para derrotar al malvado Dr. Robotnik y salvar a sus amigos animales.',
+        imagePath: 'https://firebasestorage.googleapis.com/v0/b/retrogamesmuseum-53f2f.appspot.com/o/games%2Fgenesis_sonic.jpg?alt=media&token=71624b80-05b2-4eca-b9c8-8e86c5e63225'
+      ),
+      GameModel(
+        title: 'Streets of Rage II', 
+        consoleId: 6, 
+        releaseYear: 1992, 
+        genre: 'Beat \'em up',
+        description: 'Un juego de lucha callejera donde Axel, Blaze y otros personajes se enfrentan a una organización criminal para salvar la ciudad.',
+        imagePath: 'https://firebasestorage.googleapis.com/v0/b/retrogamesmuseum-53f2f.appspot.com/o/games%2Fgenesis_streets_of_Rage_2.jpg?alt=media&token=8a08f4cd-171d-429f-ac3a-1894e67b21bf'
+      ),
     ];
 
     final defaultVideos = [
