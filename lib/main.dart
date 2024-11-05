@@ -86,7 +86,6 @@ class Index extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(horizontal: 16),
                     ),
                     onPressed: () {
-                      print("PRESIONADO");
                       onContinue();
                     },
                     child: const Text('Continuar'),
@@ -109,6 +108,7 @@ Widget titulo(String titulo) {
       fontSize: 24,
       fontWeight: FontWeight.bold,
       color: Colors.white,
+      decoration: TextDecoration.none,
     ),
   );
 }
@@ -120,6 +120,7 @@ Widget subtitulo(String titulo) {
     style: TextStyle(
       fontSize: 16,
       color: Colors.grey[600],
+      decoration: TextDecoration.none,
     ),
   );
 }

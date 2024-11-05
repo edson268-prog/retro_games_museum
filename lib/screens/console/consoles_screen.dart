@@ -82,7 +82,7 @@ class _ConsolesScreenState extends State<ConsolesScreen> {
                   ),
                   const SizedBox(height: 8.0),
                   Text(
-                    console.name + " - " + console.id.toString(),
+                    console.name,
                     style: TextStyle(
                       fontSize: 16,
                       color: Colors.grey[600],

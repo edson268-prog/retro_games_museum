@@ -36,7 +36,7 @@ class HomeBody extends StatelessWidget {
               ),
               alignment: Alignment.center,
               child: const Text(
-                'Retro Game Museum',
+                'Retro Games Museum',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 24,
